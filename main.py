@@ -1,4 +1,5 @@
 import argparse
+import os
 from sublister_runner import run_sublister
 from domain_processor import resolve_domains_from_file
 from subdomain_takeover import process_subdomains
@@ -8,7 +9,29 @@ from subdomain_takeover import process_subdomains
 # from shodan_checker import perform_shodan_check
 
 def main():
-    """Main script to perform domain enumeration with various options."""
+    print(r'''
+.------------------------------------------------------------------------------------------.
+|$$$$$$$\                                    $$\                                           |
+|$$  __$$\                                   \__|                                          |
+|$$ |  $$ | $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$\ $$$$$$$\                                  |
+|$$ |  $$ |$$  __$$\ $$  _$$  _$$\  \____$$\ $$ |$$  __$$\                                 |
+|$$ |  $$ |$$ /  $$ |$$ / $$ / $$ | $$$$$$$ |$$ |$$ |  $$ |                                |
+|$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$  __$$ |$$ |$$ |  $$ |                                |
+|$$$$$$$  |\$$$$$$  |$$ | $$ | $$ |\$$$$$$$ |$$ |$$ |  $$ |                                |
+|\_______/  \______/ \__| \__| \__| \_______|\__|\__|  \__|                                |
+|                                                                                          |
+|                                                                                          |
+|                                                                                          |
+| $$$$$$\              $$\                     $$$$$$$$\                                   |
+|$$  __$$\             $$ |                    $$  _____|                                  |
+|$$ /  $$ |$$\   $$\ $$$$$$\    $$$$$$\        $$ |      $$$$$$$\  $$\   $$\ $$$$$$\$$$$\  |
+|$$$$$$$$ |$$ |  $$ |\_$$  _|  $$  __$$\       $$$$$\    $$  __$$\ $$ |  $$ |$$  _$$  _$$\ |
+|$$  __$$ |$$ |  $$ |  $$ |    $$ /  $$ |      $$  __|   $$ |  $$ |$$ |  $$ |$$ / $$ / $$ ||
+|$$ |  $$ |$$ |  $$ |  $$ |$$\ $$ |  $$ |      $$ |      $$ |  $$ |$$ |  $$ |$$ | $$ | $$ ||
+|$$ |  $$ |\$$$$$$  |  \$$$$  |\$$$$$$  |      $$$$$$$$\ $$ |  $$ |\$$$$$$  |$$ | $$ | $$ ||
+|\__|  \__| \______/    \____/  \______/       \________|\__|  \__| \______/ \__| \__| \__||
+'------------------------------------------------------------------------------------------'
+    ''')
     parser = argparse.ArgumentParser(
         description="A comprehensive tool for domain enumeration and security checks.",
         epilog="Example usage:\n"
@@ -36,6 +59,9 @@ def main():
     domain = args.domain
     subdomains_file = args.file
 
+    os.makedirs(output_dir, exist_ok=True)
+    os.chdir(output_dir)
+
  
     if not (domain or subdomains_file):
         print("Error: You must specify a domain (-d) or provide a subdomain file (-f).")
@@ -46,7 +72,6 @@ def main():
     if domain and not subdomains_file:
         print(f"\nPerforming Subdomain Enumeration on {domain}...")
         subdomains_file = run_sublister(domain)
-        print(f"Subdomains saved in {subdomains_file}")
     else:
         print(f"\nUsing provided subdomain file: {subdomains_file}")
     
