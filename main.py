@@ -1,7 +1,6 @@
 import argparse
 from sublister_runner import run_sublister
 from domain_processor import resolve_domains_from_file
-from whatweb_runner import run_whatweb
 from subdomain_takeover import process_subdomains
 
 def main():
@@ -17,9 +16,6 @@ def main():
     print("\nProcessing the discovered subdomains...")
     resolve_domains_from_file(subdomains_file)
     print(f"\nSubdomains saved in {subdomains_file}")
-    # # Step 3: Run WhatWeb for technology detection
-    print("\nRunning WhatWeb for technology detection...")
-    # run_whatweb(subdomains_file)
     print("\nTrying subdomain takeover...")
     process_subdomains(subdomains_file)
 
