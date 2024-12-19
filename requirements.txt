@@ -1,0 +1,13 @@
+requests
+jsonschema
+nmap
+shodan
+beautifulsoup4
+python-whoi
+dns
+tabulate
+urllib
+tqdm
+textwrap
+csv
+re
