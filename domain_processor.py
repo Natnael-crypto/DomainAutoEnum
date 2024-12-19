@@ -1,5 +1,4 @@
 import dns.resolver
-import argparse
 from urllib.parse import urlparse
 from tabulate import tabulate
 import requests
