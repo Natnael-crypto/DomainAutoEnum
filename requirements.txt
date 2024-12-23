@@ -1,13 +1,9 @@
 requests
 jsonschema
-nmap
+python-nmap
 shodan
 beautifulsoup4
-python-whoi
-dns
+python-whois
+dnspython
 tabulate
-urllib
 tqdm
-textwrap
-csv
-re
