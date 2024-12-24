@@ -5,7 +5,7 @@ from domain_processor import resolve_domains_from_file
 from subdomain_takeover import process_subdomains
 # from firewall_checker import perform_firewall_check
 # from google_dorking import perform_google_dorking
-# from nmap_scanner import perform_nmap_scan
+from nmap_scanner import perform_nmap_scan
 # from shodan_checker import perform_shodan_check
 
 def main():
@@ -89,7 +89,7 @@ def main():
     
     if args.fast:
         print("\nPerforming fast Nmap scan...")
-        # perform_nmap_scan(subdomains_file, fast=True, output_dir=output_dir)
+        perform_nmap_scan(subdomains_file, fast=True, output_dir=output_dir)
     
     if args.shodan:
         print("\nPerforming Shodan checks...")
