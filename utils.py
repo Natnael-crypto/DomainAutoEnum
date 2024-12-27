@@ -1,6 +1,15 @@
+import dns.resolver
 from urllib.parse import urlparse
 from tabulate import tabulate
 import csv
+
+def get_ip(domain):
+    """Resolve IP addresses for a domain."""
+    try:
+        result = dns.resolver.resolve(domain, 'A')
+        return [ip.to_text() for ip in result]
+    except Exception:
+        return []
 
 def read_subdomains_file(subdomains_file):
     """Read the subdomains from the file. """

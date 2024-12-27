@@ -6,7 +6,7 @@ from subdomain_takeover import process_subdomains
 # from firewall_checker import perform_firewall_check
 # from google_dorking import perform_google_dorking
 from nmap_scanner import perform_nmap_scan
-# from shodan_checker import perform_shodan_check
+from shodan_checker import perform_shodan_check
 
 def main():
     print(r'''
@@ -93,7 +93,7 @@ def main():
     
     if args.shodan:
         print("\nPerforming Shodan checks...")
-        # perform_shodan_check(subdomains_file, api_key=args.shodan, output_dir=output_dir)
+        perform_shodan_check(subdomains_file, api_key=args.shodan, output_dir=output_dir)
     
     if args.dork:
         print("\nPerforming Google dorking...")
