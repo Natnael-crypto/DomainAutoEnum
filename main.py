@@ -3,7 +3,7 @@ import os
 from sublister_runner import run_sublister
 from domain_processor import resolve_domains_from_file
 from subdomain_takeover import process_subdomains
-# from firewall_checker import perform_firewall_check
+from firewall_checker import perform_firewall_check
 # from google_dorking import perform_google_dorking
 from nmap_scanner import perform_nmap_scan
 from shodan_checker import perform_shodan_check
@@ -85,7 +85,7 @@ def main():
     
     if args.firewall:
         print("\nPerforming firewall checks...")
-        # perform_firewall_check(domain, output_dir)
+        perform_firewall_check(subdomains_file, output_dir)
     
     if args.fast:
         print("\nPerforming fast Nmap scan...")
