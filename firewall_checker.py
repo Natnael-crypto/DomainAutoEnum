@@ -10,6 +10,18 @@ log.setLevel(logging.CRITICAL)
 
 
 def perform_firewall_check(subdomains_file, output_dir):
+    """
+    Perform a firewall check to detect the presence of a Web Application Firewall (WAF).
+
+    Parameters
+    ---
+    :param subdomains_file: The path to the file containing a list of subdomains to check.
+    :param output_dir: The directory where the results of the firewall checks will be saved. 
+
+    Returns
+    ---
+    :return: None, Writes output to stdout and file
+    """
     try:
         subdomains = read_subdomains_file(subdomains_file)
 
