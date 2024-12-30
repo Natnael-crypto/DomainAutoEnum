@@ -1,10 +1,11 @@
 import argparse
+import asyncio
 import os
 from sublister_runner import run_sublister
 from domain_processor import resolve_domains_from_file
 from subdomain_takeover import process_subdomains
 from firewall_checker import perform_firewall_check
-# from google_dorking import perform_google_dorking
+from google_dorking import perform_google_dorking
 from nmap_scanner import perform_nmap_scan
 from shodan_checker import perform_shodan_check
 
@@ -49,7 +50,7 @@ def main():
     parser.add_argument('-x', '--firewall', action='store_true', help='Perform firewall checks on the target domain.')
     parser.add_argument('--fast', action='store_true', help='Perform fast scans in Nmap for discovered subdomains.')
     parser.add_argument('--shodan', type=str, metavar='API_KEY', help='Use Shodan API key to perform vulnerability checks.')
-    parser.add_argument('--dork', action='store_true', help='Perform Google dorking to search for exposed sensitive information.')
+    parser.add_argument('-g','--dork', action='store_true', help='Perform Google dorking to search for exposed sensitive information.')
     parser.add_argument('--takeover', action='store_true', help='Perform subdomain takeover checks based on known fingerprints.')
 
     args = parser.parse_args()
@@ -97,7 +98,7 @@ def main():
     
     if args.dork:
         print("\nPerforming Google dorking...")
-        # perform_google_dorking(domain, output_dir)
+        asyncio.run(perform_google_dorking(domain, output_dir))
 
     print("\nAll tasks completed!")
 
