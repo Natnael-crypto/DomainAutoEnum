@@ -87,7 +87,7 @@ def output_to_file(output_dir, results, table_headers):
         return
 
     try:
-        output_file = f"{waf_output_dir}/waf_detection.csv"
+        output_file = f"{waf_output_dir}/{results[1]}_waf_detection.csv"
         write_csv(output_file, results, table_headers)
         print()
     except Exception as e:

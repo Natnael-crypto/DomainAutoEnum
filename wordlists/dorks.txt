@@ -1,0 +1,40 @@
+inurl:"contact"
+intext:email filetype:log
+intext:"@gmail.com" filetype:log
+"Index of /mail"
+"Index of /uploads"
+"Index of /backup"
+"admin account info" filetype:log
+"intext:"error" filetype:log
+"intext:"credentials" filetype:log
+intext:@
+administrator accounts/
+inurl:"admin.php"
+intitle: "Index of" .sql
+intitle:"Index of" .db
+filetype:sql "CREATE TABLE"
+intitle:"Index of" .bash_history
+intitle:"Index of" .history
+intitle:"index of" members OR accounts
+intitle:"index of" users
+inurl:/shared/help.php
+inurl:public
+intitle:index.of inbox
+intitle:"Email Accounts"
+intitle:"Server Administration"
+inurl:admin
+inurl:passwd.txt
+inurl:shadow
+robots.txt
+inurl:robots.txt
+php-addressbook "This is the addressbook for *" -warning
+filetype:ini "configuration"
+filetype:conf "server config"
+filetype:bak "backup"
+filetype:zip "backup"
+filetype:pdf "confidential"
+filetype:pdf "financial report"
+intext:"API key"
+intext:"secret" filetype:env
+filetype:php "wp-config.php"
+inurl:"/wp-content/uploads/"

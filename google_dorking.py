@@ -38,7 +38,7 @@ def output_to_file(output_dir, results, table_headers):
         return
 
     try:
-        output_file = f"{dork_output_dir}/google_dork.csv"
+        output_file = f"{dork_output_dir}/{results[1]}_google_dork.csv"
         write_csv(output_file, results, table_headers)
         print()
     except Exception as e:
