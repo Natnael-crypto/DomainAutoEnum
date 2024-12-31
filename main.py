@@ -89,8 +89,14 @@ def main():
         process_subdomains(subdomains_file)
     
     if args.firewall:
-        print("\nPerforming firewall checks...")
-        perform_firewall_check(subdomains_file, output_dir)
+        if not domain:
+            print("\nPerforming firewall checks...")
+            perform_firewall_check(subdomains_file, output_dir)
+        else:
+            os.chdir(output_dir)
+            print("\nPerforming firewall checks...")
+            perform_firewall_check(subdomains_file, output_dir)
+            os.chdir("..")
     
     if args.fast:
         print("\nPerforming fast Nmap scan...")
