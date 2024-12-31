@@ -86,9 +86,7 @@ def main():
     
     if args.takeover:
         print("\nChecking for subdomain takeover...")
-        os.chdir(output_dir)
         process_subdomains(subdomains_file)
-        os.chdir("..")
     
     if args.firewall:
         print("\nPerforming firewall checks...")
