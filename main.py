@@ -61,7 +61,7 @@ def main():
     subdomains_file = args.file
 
     os.makedirs(output_dir, exist_ok=True)
-    os.chdir(output_dir)
+    # os.chdir(output_dir)
 
  
     if not (domain or subdomains_file):
@@ -72,17 +72,23 @@ def main():
 
     if domain and not subdomains_file:
         print(f"\nPerforming Subdomain Enumeration on {domain}...")
+        os.chdir(output_dir)
         subdomains_file = run_sublister(domain)
+        os.chdir("..")
     else:
         print(f"\nUsing provided subdomain file: {subdomains_file}")
     
 
     print("\nProcessing the discovered subdomains...")
+    os.chdir(output_dir)
     resolve_domains_from_file(subdomains_file)
+    os.chdir("..")
     
     if args.takeover:
         print("\nChecking for subdomain takeover...")
+        os.chdir(output_dir)
         process_subdomains(subdomains_file)
+        os.chdir("..")
     
     if args.firewall:
         print("\nPerforming firewall checks...")
